@@ -481,8 +481,12 @@ export default function HypurrMarketplace() {
 
   const traitTypes = [...new Set(allTraits.map(t => t.trait_type))];
 
-  // Marketplace fee is 0.4%
-  const marketplaceFee = 0.004;
+  // Marketplace fee is 0.5%
+  const marketplaceFee = 0.005;
+
+  if (!isAuthenticated) {
+    return <PasswordGate onCorrectPassword={() => setIsAuthenticated(true)} />;
+  }
 
   return (
     <div className="min-h-screen bg-[#0a0e1a] text-white">
