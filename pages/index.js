@@ -45,6 +45,7 @@ const WHYPE_ABI = [
 ];
 
 export default function HypurrMarketplace() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [account, setAccount] = useState('');
   const [provider, setProvider] = useState(null);
   const [nfts, setNfts] = useState([]);
