@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import { TrendingUp, Activity, Filter, X, Clock, Tag, DollarSign, Users } from 'lucide-react';
 import config from '../config';
-import WHYPEWrapper from '../components/WHYPEWrapper';
-import PasswordGate from '../components/PasswordGate'; 
+import WHYPEWrapper from '../components/WHYPEWrapper.jsx';
+import PasswordGate from '../components/PasswordGate.js'; 
 
 // Use config for contract addresses
 const HYPURR_NFT_ADDRESS = config.contracts.hypurrNFT;
