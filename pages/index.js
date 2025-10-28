@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import { TrendingUp, Activity, Filter, X, Clock, Tag, DollarSign, Users } from 'lucide-react';
 import config from '../config';
-import WHYPEWrapper from '../components/WHYPEWrapper';
+import whypewrapper from '../components/whypewrapper';
 import PasswordGate from '../components/PasswordGate'; 
 
 // Use config for contract addresses
@@ -656,7 +656,7 @@ export default function HypurrMarketplace() {
 
             {currentTab === 'wrap' && (
               <div className="max-w-md mx-auto">
-                <WHYPEWrapper 
+                <whyperapper 
                   provider={provider} 
                   account={account}
                   onBalanceUpdate={(balances) => {
