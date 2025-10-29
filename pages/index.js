@@ -759,8 +759,19 @@ function NFTListCard({ tokenId, nft, onList, currency }) {
 
   return (
     <div className="bg-[#151d2f] border border-[#1f2937] rounded-xl p-6">
-      <div className="aspect-square bg-gradient-to-br from-[#00d4aa] to-[#0088cc] rounded-lg flex items-center justify-center mb-4">
-        <p className="text-4xl font-bold text-black">#{tokenId}</p>
+      <div className="aspect-square bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center overflow-hidden relative">
+        {nft.metadata?.image ? (
+          <img 
+            src={config.ipfsToHttp(nft.metadata.image)} 
+            alt={nft.metadata.name || `Hypurr #${nft.tokenId}`}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              e.target.style.display = 'none';
+            }}
+          />
+        ) : (
+          <p className="text-5xl font-bold">#{nft.tokenId}</p>
+        )}
       </div>
       <p className="font-bold mb-3">{nft?.metadata?.name || `Hypurr #${tokenId}`}</p>
       
