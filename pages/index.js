@@ -893,7 +893,6 @@ function NFTCard({ nft, account, marketplaceFee, currency, whypeBalance, onBuy, 
         ) : (
           <p className="text-5xl font-bold">#{nft.tokenId}</p>
         )}
-        {!nft.metadata?.image && <p className="text-5xl font-bold">#{nft.tokenId}</p>}
       </div>
       
       <div className="p-4">
