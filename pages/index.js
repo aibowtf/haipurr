@@ -863,21 +863,32 @@ function NFTCard({ nft, account, marketplaceFee, currency, whypeBalance, onBuy, 
     setShowOffer(false);
   };
 
+  // Debug: Log image info
+  console.log(`NFT ${nft.tokenId} image:`, nft.metadata?.image);
+  if (nft.metadata?.image) {
+    console.log(`NFT ${nft.tokenId} converted URL:`, config.ipfsToHttp(nft.metadata.image));
+  }
+
   return (
     <div className="bg-gray-800 bg-opacity-50 border border-gray-700 rounded-xl overflow-hidden hover:border-purple-500 transition">
-     <div className="aspect-square bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center overflow-hidden relative">
+      <div className="aspect-square bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center overflow-hidden relative">
         {nft.metadata?.image ? (
           <img 
             src={config.ipfsToHttp(nft.metadata.image)} 
             alt={nft.metadata.name || `Hypurr #${nft.tokenId}`}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover absolute top-0 left-0"
             onError={(e) => {
+              console.error(`Failed to load image for NFT ${nft.tokenId}:`, e.target.src);
               e.target.style.display = 'none';
+            }}
+            onLoad={() => {
+              console.log(`Successfully loaded image for NFT ${nft.tokenId}`);
             }}
           />
         ) : (
           <p className="text-5xl font-bold">#{nft.tokenId}</p>
         )}
+        {!nft.metadata?.image && <p className="text-5xl font-bold">#{nft.tokenId}</p>}
       </div>
       
       <div className="p-4">
