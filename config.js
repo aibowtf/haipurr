@@ -36,8 +36,8 @@ const CONTRACTS = {
 const METADATA = {
   baseUri: 'ipfs://bafybeigs5lojzzear4gyuizxgmdabdam7jftguarspv4rcxw665pkioxdy/',
   ipfsGateways: [
-    'https://ipfs.io/ipfs/',
     'https://cloudflare-ipfs.com/ipfs/',
+    'https://ipfs.io/ipfs/',
     'https://dweb.link/ipfs/',
     'https://nftstorage.link/ipfs/'
   ]
