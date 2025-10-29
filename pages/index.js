@@ -251,15 +251,20 @@ export default function HypurrMarketplace() {
   };
 
   const fetchMetadata = async (nftContract, tokenId) => {
-    try {
-      const uri = await nftContract.tokenURI(tokenId);
-      const ipfsUrl = config.ipfsToHttp(uri);
-      const response = await fetch(ipfsUrl);
-      return await response.json();
-    } catch {
-      return { name: `Hypurr #${tokenId}`, attributes: [] };
-    }
-  };
+  try {
+    const uri = await nftContract.tokenURI(tokenId);
+    console.log(`Token ${tokenId} URI:`, uri);
+    const ipfsUrl = config.ipfsToHttp(uri);
+    console.log(`Token ${tokenId} IPFS URL:`, ipfsUrl);
+    const response = await fetch(ipfsUrl);
+    const metadata = await response.json();
+    console.log(`Token ${tokenId} metadata:`, metadata);
+    return metadata;
+  } catch (e) {
+    console.error(`Error fetching metadata for token ${tokenId}:`, e);
+    return { name: `Hypurr #${tokenId}`, attributes: [] };
+  }
+};
 
   const loadActivityFeed = async (marketplaceContract) => {
     try {
